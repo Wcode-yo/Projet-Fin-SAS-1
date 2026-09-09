@@ -181,7 +181,7 @@ const trips = [
     }
 ];
 var prompt = require("prompt-sync")();
-
+//"Ajouter main menu function"
 function main() {
     let choix;
 
