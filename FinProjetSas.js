@@ -206,21 +206,27 @@ function main() {
                 break;
 
             case 2:
+                Acheterunticket();
                 break;
 
             case 3:
+                Afficherlestickets();
                 break;
 
             case 4:
+                 Annulerunticket(); 
                 break;
 
             case 5:
+                Rechercherunticket(); 
                 break;
 
             case 6:
+                Filtrerlestrajets(); 
                 break;
 
             case 7:
+                Trierlestrajets();
                 break;
 
             case 0:
@@ -233,5 +239,20 @@ function main() {
 
     } while (choix !== 0);
 }
+main() 
 
-main();
+ function afficherTrajets(){
+console.log("=== TRAJETS DISPONIBLES ===")
+for (let i = 0 ; i<trips.length;i++){
+console.log(
+         "#"+trips[i].id+" " 
+         +trips[i].departure
+         +"→"+trips[i].destination+"\n",
+            "Départ:"+trips[i].departureTime+"\n",       
+            "Ariivée:"+trips[i].arrivalTime+"\n",
+            "Prix:"+trips[i].price+"DH"+"\n",
+            "Places disponibles:"+trips[i].availableSeats+"\n"
+           
+);
+ }
+ }
