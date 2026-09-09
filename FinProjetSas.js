@@ -240,29 +240,7 @@ function main() {
     } while (choix !== 0);
 }
 main() 
-//fonction pour afficher les let tickets = [];
-function Acheterunticket(){
 
-
-
-    let passengerName = prompt("Nom du passager : ");
-    let tripId = Number(prompt("Identifiant du trajet : "));
-
-    let selectedTrip = null;
-
-    for (let i = 0; i < trips.length; i++) {
-        if(trips[i].id==tripId) {
-       selectedTrip=tripId;
-        break;} 
-       
-        }
-if(selectedTrip==null){
-console.log("Trajet introuvable.") 
-return ;
-}console.log(selectedTrip)
-
-        } 
-           
 // fonction pour afficher les trajets 
 function afficherTrajets() {
 
