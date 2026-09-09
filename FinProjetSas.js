@@ -180,3 +180,58 @@ const trips = [
         availableSeats: 50
     }
 ];
+var prompt = require("prompt-sync")();
+
+function main() {
+    let choix;
+
+    do {
+        console.log("=========================");
+        console.log("RAILWAY MANAGER");
+        console.log("=========================");
+        console.log("1. Afficher les trajets");
+        console.log("2. Acheter un ticket");
+        console.log("3. Afficher les tickets");
+        console.log("4. Annuler un ticket");
+        console.log("5. Rechercher un ticket");
+        console.log("6. Filtrer les trajets");
+        console.log("7. Trier les trajets");
+        console.log("0. Quitter");
+
+        choix = Number(prompt("Votre choix : "));
+
+        switch (choix) {
+            case 1:
+                afficherTrajets();
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+
+            case 4:
+                break;
+
+            case 5:
+                break;
+
+            case 6:
+                break;
+
+            case 7:
+                break;
+
+            case 0:
+                console.log("Au revoir");
+                break;
+
+            default:
+                console.log("Choix invalide");
+        }
+
+    } while (choix !== 0);
+}
+
+main();
