@@ -240,19 +240,70 @@ function main() {
     } while (choix !== 0);
 }
 main() 
+//fonction pour afficher les let tickets = [];
+function Acheterunticket(){
 
- function afficherTrajets(){
-console.log("=== TRAJETS DISPONIBLES ===")
-for (let i = 0 ; i<trips.length;i++){
-console.log(
-         "#"+trips[i].id+" " 
-         +trips[i].departure
-         +"→"+trips[i].destination+"\n",
-            "Départ:"+trips[i].departureTime+"\n",       
-            "Ariivée:"+trips[i].arrivalTime+"\n",
-            "Prix:"+trips[i].price+"DH"+"\n",
-            "Places disponibles:"+trips[i].availableSeats+"\n"
+
+
+    let passengerName = prompt("Nom du passager : ");
+    let tripId = Number(prompt("Identifiant du trajet : "));
+
+    let selectedTrip = null;
+
+    for (let i = 0; i < trips.length; i++) {
+        if(trips[i].id==tripId) {
+       selectedTrip=tripId;
+        break;} 
+       
+        }
+if(selectedTrip==null){
+console.log("Trajet introuvable.") 
+return ;
+}console.log(selectedTrip)
+
+        } 
            
-);
- }
- }
+// fonction pour afficher les trajets 
+function afficherTrajets() {
+
+    console.log("=== TRAJETS DISPONIBLES ===");
+
+    for (let i = 0; i < trips.length; i++) {
+
+        console.log(
+            "#" + trips[i].id + " " +
+            trips[i].departure +
+            " → " + trips[i].destination + "\n" +
+            "Départ : " + trips[i].departureTime + "\n" +
+            "Arrivée : " + trips[i].arrivalTime + "\n" +
+            "Prix : " + trips[i].price + " DH\n" +
+            "Places disponibles : " + trips[i].availableSeats + "\n" +
+            "-------------------------"
+        );
+    }
+    //fonction pour acheter un tiket 
+}let tickets = [];
+function Acheterunticket(){
+
+
+
+    let passengerName = prompt("Nom du passager : ");
+    let tripId = Number(prompt("Identifiant du trajet : "));
+
+    let selectedTrip = null;
+
+    for (let i = 0; i < trips.length; i++) {
+        if(trips[i].id==tripId) {
+       selectedTrip=trips[i];
+        break;} 
+       
+        }
+if(selectedTrip==null){
+console.log("Trajet introuvable.") 
+return ;
+}console.log(selectedTrip)
+
+        } 
+           
+  
+    
