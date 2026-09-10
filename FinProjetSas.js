@@ -180,7 +180,10 @@ const trips = [
         availableSeats: 50
     }
 ];
+
 var prompt = require("prompt-sync")();
+let tickets = [];
+let nextTicketId = 1;
 //"Ajouter main menu function"
 function main() {
     let choix;
@@ -236,18 +239,14 @@ function main() {
             default:
                 console.log("Choix invalide");
         }
-
     } while (choix !== 0);
 }
 main() 
 
 // fonction pour afficher les trajets 
 function afficherTrajets() {
-
     console.log("=== TRAJETS DISPONIBLES ===");
-
     for (let i = 0; i < trips.length; i++) {
-
         console.log(
             "#" + trips[i].id + " " +
             trips[i].departure +
@@ -260,11 +259,8 @@ function afficherTrajets() {
         );
     }
     //fonction pour acheter un tiket 
-}let tickets = [];
+}
 function Acheterunticket(){
-
-
-
     let passengerName = prompt("Nom du passager : ");
     let tripId = Number(prompt("Identifiant du trajet : "));
 
@@ -281,7 +277,68 @@ console.log("Trajet introuvable.")
 return ;
 }console.log(selectedTrip)
 
-        } 
-           
-  
-    
+         
+    if (selectedTrip.availableSeats <= 0) {
+    console.log("Train complet.");
+    return;
+}
+let ticket = {
+    id: nextTicketId,
+    passengerName: passengerName,
+    tripId: selectedTrip.id,
+    seatNumber:51-selectedTrip.availableSeats,
+    price: selectedTrip.price
+     
+};
+tickets.push(ticket);
+selectedTrip.availableSeats--;
+nextTicketId++;
+
+ console.log("Ticket acheté avec succès.");
+    console.log("Ticket #" + ticket.id);
+    console.log("Passager : " + ticket.passengerName);
+    console.log("Trajet : " +
+                selectedTrip.departure +
+                " → " +
+                selectedTrip.destination
+        
+    );
+    console.log("Place : " + ticket.seatNumber);
+    console.log("Prix : " + ticket.price + " DH");
+}
+function Afficherlestickets() {
+    console.log("=== TICKETS ===");
+    if (tickets.length === 0) {
+        console.log("Aucun ticket enregistré.");
+        return;
+    }
+
+    for (let i = 0; i < tickets.length; i++) {
+
+        let trip = null;
+       for (let j = 0; j < trips.length; j++) {
+
+            if (trips[j].id === tickets[i].tripId) {
+                trip = trips[j];
+                break;
+    }
+    }
+
+        console.log(
+            "Ticket #" + tickets[i].id + "\n" +
+            "Passager : " + tickets[i].passengerName + "\n" +
+            "Trajet : " + trip.departure + " → " + trip.destination + "\n" +
+            
+            "Place : " + tickets[i].seatNumber + "\n" +
+            "Prix : " + tickets[i].price + " DH\n" +
+            "-------------------------"
+        );
+    }
+}
+
+
+
+
+
+
+ 
