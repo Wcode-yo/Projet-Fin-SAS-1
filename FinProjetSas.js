@@ -201,8 +201,11 @@ function main() {
         console.log("7. Trier les trajets");
         console.log("0. Quitter");
 
+<<<<<<< HEAD
 //utilise .trim pour le chaine character problem 
 
+=======
+>>>>>>> 97b4917f4d14f01342ee35cf46e439e7ef63628e
         choix = prompt("Votre choix : ").trim();
         if(choix != ""){
             choix = Number(choix)
@@ -324,7 +327,11 @@ nextTicketId++;
     );
     console.log("Place : " + ticket.seatNumber);
     console.log("Prix : " + ticket.price + " DH");
+<<<<<<< HEAD
  //Fonction pour afficher les tickets
+=======
+ 
+>>>>>>> 97b4917f4d14f01342ee35cf46e439e7ef63628e
 }function Afficherlestickets() {
     console.log("=== TICKETS ===");
     if (tickets.length === 0) {
@@ -354,6 +361,7 @@ nextTicketId++;
         );
     }
 }
+<<<<<<< HEAD
 //fonction pour annuler le ticket 
 function  Annulerunticket(){
 
@@ -376,3 +384,5 @@ break;
 }
 
 }
+=======
+>>>>>>> 97b4917f4d14f01342ee35cf46e439e7ef63628e
