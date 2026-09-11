@@ -180,7 +180,10 @@ const trips = [
         availableSeats: 50
     }
 ];
+
 var prompt = require("prompt-sync")();
+let tickets = [];
+let nextTicketId = 1;
 //"Ajouter main menu function"
 function main() {
     let choix;
@@ -198,8 +201,12 @@ function main() {
         console.log("7. Trier les trajets");
         console.log("0. Quitter");
 
-        choix = Number(prompt("Votre choix : "));
+//utilise .trim pour le chaine character problem 
 
+        choix = prompt("Votre choix : ").trim();
+        if(choix != ""){
+            choix = Number(choix)
+        } 
         switch (choix) {
             case 1:
                 afficherTrajets();
@@ -236,18 +243,14 @@ function main() {
             default:
                 console.log("Choix invalide");
         }
-
-    } while (choix !== 0);
+    } while (choix !== 0 );
 }
 main() 
 
 // fonction pour afficher les trajets 
 function afficherTrajets() {
-
     console.log("=== TRAJETS DISPONIBLES ===");
-
     for (let i = 0; i < trips.length; i++) {
-
         console.log(
             "#" + trips[i].id + " " +
             trips[i].departure +
@@ -260,28 +263,116 @@ function afficherTrajets() {
         );
     }
     //fonction pour acheter un tiket 
-}let tickets = [];
-function Acheterunticket(){
+}
+function Acheterunticket(){ 
+let selectedtrips=null ;
+ let passengerName = prompt("Nom du passager : ");
+ let tripId = Number(prompt("Identifiant du trajet : "));
+ 
+for(let i= 0;i<trips.length;i++){
+ if(trips[i].id===tripId){
+ selectedtrips=trips[i]
+ break;
+}
+}if (selectedtrips === null) {
+console.log("Trajet introuvable.");
+return;
+}
+if(selectedtrips.availableSeats<=0){ 
+console.log ("Train complet.")
+return;}
+let seatNumber = 1;
+let seatTaken;
+do {
+    seatTaken = false;
 
-
-
-    let passengerName = prompt("Nom du passager : ");
-    let tripId = Number(prompt("Identifiant du trajet : "));
-
-    let selectedTrip = null;
-
-    for (let i = 0; i < trips.length; i++) {
-        if(trips[i].id==tripId) {
-       selectedTrip=trips[i];
-        break;} 
-       
+    for (let i = 0; i < tickets.length; i++) {
+        if (
+            tickets[i].tripId === selectedtrips.id &&
+            tickets[i].seatNumber === seatNumber
+        ) {
+            seatTaken = true;
+            break;
         }
-if(selectedTrip==null){
-console.log("Trajet introuvable.") 
-return ;
-}console.log(selectedTrip)
+    }
+    if (seatTaken === true) {
+        seatNumber++;
+    }
+} while (seatTaken === true);
 
-        } 
-           
-  
-    
+let ticket = {
+    id: nextTicketId,
+    passengerName: passengerName,
+    tripId: selectedtrips.id,
+    seatNumber,
+    price: selectedtrips.price,
+    seatNumber: seatNumber
+     
+};
+tickets.push(ticket);
+selectedtrips.availableSeats--;
+nextTicketId++;
+
+ console.log("Ticket acheté avec succès.");
+    console.log("Ticket #" + ticket.id);
+    console.log("Passager : " + ticket.passengerName);
+    console.log("Trajet : " +
+                selectedtrips.departure +
+                " → " +
+                selectedtrips.destination
+        
+    );
+    console.log("Place : " + ticket.seatNumber);
+    console.log("Prix : " + ticket.price + " DH");
+ //Fonction pour afficher les tickets
+}function Afficherlestickets() {
+    console.log("=== TICKETS ===");
+    if (tickets.length === 0) {
+        console.log("Aucun ticket enregistré.");
+        return;
+    }
+
+    for (let i = 0; i < tickets.length; i++) {
+
+        let trip = null;
+       for (let j = 0; j < trips.length; j++) {
+
+            if (trips[j].id === tickets[i].tripId) {
+                trip = trips[j];
+                break;
+    }
+    }
+
+        console.log(
+            "Ticket #" + tickets[i].id + "\n" +
+            "Passager : " + tickets[i].passengerName + "\n" +
+            "Trajet : " + trip.departure + " → " + trip.destination + "\n" +
+            
+            "Place : " + tickets[i].seatNumber + "\n" +
+            "Prix : " + tickets[i].price + " DH\n" +
+            "-------------------------"
+        );
+    }
+}
+//fonction pour annuler le ticket 
+function  Annulerunticket(){
+
+let annul=Number(prompt("Identifiant du ticket :"))
+
+for(let i=0;i<tickets.length;i++){
+ 
+     if(tickets[i].id===annul){
+     if(tickets.splice(i, 1)){
+     console.log("Ticket annulé avec succès.")
+
+     }
+break; 
+
+
+ }
+
+
+
+}
+
+}
