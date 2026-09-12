@@ -369,7 +369,41 @@ function  Annulerunticket(){
     }
 
     if(suppr==false){
-console.log("Ticket Introuvable!")
-
+console.log("Ticket Introuvable!") 
     }
+   
+    }
+
+function gittrip(idtrip){
+    for(let i=0;i<trips.length;i++){
+        if(trips[i].id===idtrip) return trips[i]
+    }
+    
+
+
+
+
 }
+
+function Rechercherunticket(){
+let foundticket=(prompt("Nom du passager: ")).trim()
+for(let i=0;i<tickets.length;i++) 
+if(foundticket === tickets[i].passengerName){
+const trip = gittrip(tickets[i].tripId)
+console.log(
+            "Ticket #" + tickets[i].id + "\n" +
+            "Passager : " + tickets[i].passengerName + "\n" +
+            "Trajet : " + trip.departure + " → " + trip.destination + "\n" +
+            
+            "Place : " + tickets[i].seatNumber + "\n" +
+            "Prix : " + tickets[i].price + " DH\n" +
+            "-------------------------"
+        );
+}
+
+
+
+
+
+
+  }
