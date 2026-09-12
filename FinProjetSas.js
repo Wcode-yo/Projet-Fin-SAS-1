@@ -386,9 +386,11 @@ function gittrip(idtrip){
 }
 
 function Rechercherunticket(){
-let foundticket=(prompt("Nom du passager: ")).trim()
+let trouve = false ;
+    let foundticket=(prompt("Nom du passager: ")).trim()
 for(let i=0;i<tickets.length;i++) 
 if(foundticket === tickets[i].passengerName){
+    trouve=true ;
 const trip = gittrip(tickets[i].tripId)
 console.log(
             "Ticket #" + tickets[i].id + "\n" +
@@ -399,11 +401,21 @@ console.log(
             "Prix : " + tickets[i].price + " DH\n" +
             "-------------------------"
         );
+} if (trouve==false){
+
+console.log("Aucun ticket trouvé!")
+}
+
+}function Filtrerlestrajets(){
+ let foundvill=(prompt("Ville de départ :")).trim()
+   let filteredTrips = trips.filter(trip => trip.departure === foundvill);
+for (let i = 0; i < filteredTrips.length; i++) {
+  console.log(
+    filteredTrips[i].departure + " → " + filteredTrips[i].destination+" : "+filteredTrips[i].price+" DH ");
+}
+
 }
 
 
 
 
-
-
-  }
