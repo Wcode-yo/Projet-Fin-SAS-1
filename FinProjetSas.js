@@ -407,15 +407,37 @@ console.log("Aucun ticket trouvé!")
 }
 
 }function Filtrerlestrajets(){
+    let checkvill=false;
  let foundvill=(prompt("Ville de départ :")).trim()
    let filteredTrips = trips.filter(trip => trip.departure === foundvill);
+  
 for (let i = 0; i < filteredTrips.length; i++) {
   console.log(
     filteredTrips[i].departure + " → " + filteredTrips[i].destination+" : "+filteredTrips[i].price+" DH ");
-}
+checkvill=true;}
+if(checkvill===false){
+console.log("Ville Introuvable!")
 
 }
 
+}function Trierlestrajets() {
+    for (let v = 0; v < trips.length - 1; v++) {
 
+        for (let i = 0; i < trips.length - 1; i++) {
 
+            if (trips[i].price > trips[i + 1].price) {
+                let temp = trips[i];
+                trips[i] = trips[i + 1];
+                trips[i + 1] = temp;
+            }
 
+        } 
+
+    } 
+
+    for (let i = 0; i < trips.length; i++) {
+        console.log(trips[i].departure + " → " + trips[i].destination + " : " +trips[i].price + " DH" );
+         
+    }
+
+}
