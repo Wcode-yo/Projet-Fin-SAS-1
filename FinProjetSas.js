@@ -369,19 +369,22 @@ function Annulerunticket() {
     for (let i = 0; i < tickets.length; i++) {
         if (tickets[i].id === annul) {
 
+            let trip = gettrip(tickets[i].tripId);
+
             if (tickets.splice(i, 1)) {
-                console.log("Ticket annulé avec succès.")
-                suppr = true
+                trip.availableSeats++;
+
+                console.log("Ticket annulé avec succès.");
+                suppr = true;
             }
             break;
         }
     }
-
     if (suppr == false) {
         console.log("Ticket Introuvable!")
     }
-
 }
+
 //fonction pour les trips id 
 function gettrip(idtrip) {
     for (let i = 0; i < trips.length; i++) {
@@ -467,7 +470,7 @@ function Statistiques() {
         case 2:
             SumPrice()
             break;
-       
+
         case 3:
             prompt("Press Entrer pour revenir au menu principal: ")
             break;
@@ -484,19 +487,13 @@ function Statistiques() {
         let total = 0
         if (tickets.length !== 0) {
             for (let pr = 0; pr < tickets.length; pr++) {
-               total+=tickets[pr].price ;
+                total += tickets[pr].price;
             }
-                console.log(total+"DH")
+            console.log(total + "DH")
 
-        }else{console.log(" Aucun ticket ! ")}
+        } else { console.log(" Aucun ticket ! ") }
+    }
 }
-}
-
-        
-       
-   
-
-    
 
 
 
@@ -505,13 +502,19 @@ function Statistiques() {
 
 
 
-        
 
 
 
 
 
-    
+
+
+
+
+
+
+
+
 
 
 
