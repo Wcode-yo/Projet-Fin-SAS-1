@@ -468,10 +468,8 @@ function Statistiques() {
         case 2:
             SumPrice()
             break;
+       
         case 3:
-            Tpv()
-            break;
-        case 4:
             prompt("Press Entre pour revenir au menu principal: ")
             break;
 
