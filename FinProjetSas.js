@@ -269,7 +269,7 @@ function afficherTrajets() {
 }//fonction pour acheter un ticket 
 function Acheterunticket() {
     let selectedtrips = null;
-    let passengerName = prompt("Nom du passager : ");
+    let passengerName = prompt("Nom du passager : ").trim();
     let tripId = Number(prompt("Identifiant du trajet : "));
 
     for (let i = 0; i < trips.length; i++) {
@@ -383,7 +383,7 @@ function Annulerunticket() {
 
 }
 //fonction pour les trips id 
-function gittrip(idtrip) {
+function gettrip(idtrip) {
     for (let i = 0; i < trips.length; i++) {
         if (trips[i].id === idtrip) return trips[i]
     }
@@ -400,7 +400,7 @@ function Rechercherunticket() {
     for (let i = 0; i < tickets.length; i++)
         if (foundticket === tickets[i].passengerName) {
             trouve = true;
-            const trip = gittrip(tickets[i].tripId)
+            const trip = gettrip(tickets[i].tripId)
             console.log(
                 "Ticket #" + tickets[i].id + "\n" +
                 "Passager : " + tickets[i].passengerName + "\n" +
@@ -457,9 +457,8 @@ function Statistiques() {
     console.log("--------Statistiques-------------")
     console.log("1. Nombre total de tickets vendus")
     console.log("2. Chiffre d'affaires total")
-    console.log("3. Trajet le plus vendu")
-    console.log("4. Revenir a menu principal")
-    const choix = Number(prompt("Cchoisez un nombre entre 1 et 4 :"))
+    console.log("3. Revenir a menu principal")
+    const choix = Number(prompt("choisi un nombre entre 1 et 4 :"))
     switch (choix) {
 
         case 1:
@@ -489,7 +488,7 @@ function Statistiques() {
             }
                 console.log(total+"DH")
 
-        }else{console.log("No ticket prix pour calculer ! ")}
+        }else{console.log(" Aucun ticket ! ")}
 }
 }
 
