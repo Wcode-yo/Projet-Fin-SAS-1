@@ -470,7 +470,7 @@ function Statistiques() {
             break;
        
         case 3:
-            prompt("Press Entre pour revenir au menu principal: ")
+            prompt("Press Entrer pour revenir au menu principal: ")
             break;
 
     }
@@ -489,7 +489,7 @@ function Statistiques() {
             }
                 console.log(total+"DH")
 
-        }else{console.log("No ticket prix to calculer ! ")}
+        }else{console.log("No ticket prix pour calculer ! ")}
 }
 }
 
